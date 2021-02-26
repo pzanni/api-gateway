@@ -4,7 +4,7 @@ const Items = () => {
     const [items, setItems] = useState(null);
 
     useEffect(() => {
-        fetch('http://localhost:8080/items')
+        fetch('http://localhost:9000/items/')
         .then(response => response.json())
         .then(data => {
           console.log('Success:', data);

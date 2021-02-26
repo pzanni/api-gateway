@@ -12,8 +12,6 @@ const routes = require('./routes/Routes');
 
 const app = express();
 
-require('dotenv').load();
-
 mongoose.connect(config.DB, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
@@ -27,7 +25,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/items', routes);
+app.use('/users', routes);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
