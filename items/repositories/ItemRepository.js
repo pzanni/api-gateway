@@ -6,10 +6,8 @@ class ItemRepository {
     this.model = model;
   }
 
-  create(name) {
-    const newItem = { name };
+  create(newItem) {
     const item = new this.model(newItem);
-
     return item.save();
   }
 

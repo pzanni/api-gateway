@@ -1,17 +1,15 @@
-const User = require('../models/User');
+const Review = require('../models/Review');
 
-class UserRepository {
+class ReviewRepository {
 
   constructor(model) {
     this.model = model;
   }
 
-  create(email) {
-    const newUser = { email };
-    const user = new this.model(newUser);
-    return user.save();
+  create(review) {
+    const newReview = new this.model(review);
+    return newReview.save();
   }
-
 
   findAll() {
     return this.model.find();
@@ -31,4 +29,4 @@ class UserRepository {
   }
 }
 
-module.exports = new UserRepository(User);
+module.exports = new ReviewRepository(Review);

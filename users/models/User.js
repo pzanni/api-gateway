@@ -6,6 +6,9 @@ const userSchema = new Schema({
   email: {
     type: String,
   },
+  name: {
+    type: String
+  }
 });
 
 const User = mongoose.model('User', userSchema);

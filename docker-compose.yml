@@ -11,21 +11,49 @@ services:
     ports:
       - "8080:8080"
     depends_on:
-      - mongo
-  mongo:
-    image: mongo
-    ports:
-      - "27018:27018"
+      - mongo_items
   users:
     build: ./users
     ports:
       - "8090:8090"
     depends_on:
-      - mongo
+      - mongo_users
+  categories:
+    build: ./categories
+    ports:
+      - "8060:8060"
+    depends_on:
+      - mongo_categories
+  reviews:
+    build: ./reviews
+    ports:
+      - "8050:8050"
+    depends_on:
+      - mongo_reviews
+  mongo_items:
+    image: mongo
+    ports:
+      - "27018:27017"
+    volumes:
+      - ./data/db-mongo_items:/data/db
   mongo_users:
     image: mongo
     ports:
       - "27017:27017"
+    volumes:
+      - ./data/db-mongo_users:/data/db
+  mongo_categories:
+    image: mongo
+    ports:
+      - "27019:27017"
+    volumes:
+      - ./data/db-mongo_categories:/data/db
+  mongo_reviews:
+    image: mongo
+    ports:
+      - "27016:27017"
+    volumes:
+      - ./data/db-mongo_reviews:/data/db
   frontend:
     container_name: frontend
     build: ./frontend
@@ -36,4 +64,5 @@ services:
       - 3001:3000
     environment:
       - CHOKIDAR_USEPOLLING=true
+
 

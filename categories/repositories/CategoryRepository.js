@@ -1,17 +1,16 @@
-const User = require('../models/User');
+const Category = require('../models/Category');
 
-class UserRepository {
+class CategoryRepository {
 
   constructor(model) {
     this.model = model;
   }
 
-  create(email) {
-    const newUser = { email };
-    const user = new this.model(newUser);
-    return user.save();
+  create(name) {
+    const newCategory = { name };
+    const category = new this.model(newCategory);
+    return category.save();
   }
-
 
   findAll() {
     return this.model.find();
@@ -31,4 +30,4 @@ class UserRepository {
   }
 }
 
-module.exports = new UserRepository(User);
+module.exports = new CategoryRepository(Category);

@@ -10,8 +10,8 @@ app.get('/', (req, res) => {
 });
 
 app.post('/', (req, res) => {
-  const { name } = req.body;
-  repository.create(name).then((item) => {
+  const { name, description } = req.body;
+  repository.create({ name, description }).then((item) => {
     res.json(item);
   }).catch((error) => console.log(error));
 });
