@@ -1,13 +1,13 @@
-const Category = require('../models/Category');
+const SubCategory = require('../models/SubCategory');
 
-class CategoryRepository {
+class SubCategoryRepository {
 
   constructor(model) {
     this.model = model;
   }
 
-  create(name) {
-    const newCategory = { name };
+  create(name, categoryId) {
+    const newCategory = { name, categoryId };
     const category = new this.model(newCategory);
     return category.save();
   }
@@ -34,4 +34,4 @@ class CategoryRepository {
   }
 }
 
-module.exports = new CategoryRepository(Category);
+module.exports = new SubCategoryRepository(SubCategory);

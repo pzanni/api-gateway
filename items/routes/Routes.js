@@ -9,9 +9,16 @@ app.get('/', (req, res) => {
   }).catch((error) => console.log(error));
 });
 
+app.get('/subcategory/:id', (req, res) => {
+  const { id } = req.params;
+  repository.find({ subCategoryId: id }).then((items) => {
+    res.json(items);
+  }).catch((error) => console.log(error));
+});
+
 app.post('/', (req, res) => {
-  const { name, description } = req.body;
-  repository.create({ name, description }).then((item) => {
+  const { name, description, subCategoryId } = req.body;
+  repository.create({ name, description, subCategoryId }).then((item) => {
     res.json(item);
   }).catch((error) => console.log(error));
 });

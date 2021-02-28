@@ -1,7 +1,14 @@
 const express = require('express');
 
 const app = express.Router();
-const repository = require('../repositories/CategoryRepository');
+const repository = require('../repositories/SubCategoryRepository');
+
+app.get('/category/:id', (req, res) => {
+  const { id } = req.params;
+  repository.find({ categoryId: id })
+    .then((subcategories) => res.json(subcategories))
+    .catch((error) => console.log(error));
+});
 
 app.get('/', (req, res) => {
   repository.findAll().then((categories) => {
@@ -11,13 +18,13 @@ app.get('/', (req, res) => {
 
 app.post('/', (req, res) => {
   console.log(req.body)
-  const { name } = req.body;
-  repository.create(name).then((categories) => {
+  const { name, categoryId } = req.body;
+  repository.create(name, categoryId).then((categories) => {
     res.json(categories);
   }).catch((error) => console.log(error));
 });
 
-app.delete('/:id', (req, res) => {
+app.delete(`/:id`, (req, res) => {
   const { id } = req.params;
   repository.deleteById(id).then((ok) => {
     console.log(ok);
@@ -26,7 +33,7 @@ app.delete('/:id', (req, res) => {
   }).catch((error) => console.log(error));
 });
 
-app.put('/:id', (req, res) => {
+app.put(`/:id`, (req, res) => {
   const { id } = req.params;
   const category = { name: req.body.name };
   repository.updateById(id, category)

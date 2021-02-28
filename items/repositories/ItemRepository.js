@@ -11,6 +11,9 @@ class ItemRepository {
     return item.save();
   }
 
+  find(condition) {
+    return this.model.find(condition);
+  }
 
   findAll() {
     return this.model.find();

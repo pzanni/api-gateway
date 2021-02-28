@@ -9,6 +9,7 @@ const cors = require('cors')
 const config = require('./config');
 
 const routes = require('./routes/Routes');
+const subRoutes = require('./routes/SubCategoryRoutes');
 
 const app = express();
 
@@ -26,6 +27,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/categories', routes);
+app.use('/subcategories', subRoutes);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
