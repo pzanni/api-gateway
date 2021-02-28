@@ -11,4 +11,13 @@ app.get('/', (req: any, res: any) => {
     });
 });
 
+app.get('/subcategory/:id', (req: any, res: any) => {
+    const { id } = req.params;
+    console.log(`${API_URL}/subcategory/${id}`)
+    axios.get(`${API_URL}/subcategory/${id}`).then((resp: any) => {
+        console.log(resp.data);
+        res.send(resp.data);
+    });
+});
+
 module.exports = app;
