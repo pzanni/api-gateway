@@ -1,14 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import Items from '../components/Items';
+import Reviews from '../components/Reviews';
 
 const Users = () => {
   const [categories, setCategories] = useState(null);
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [subCategories, setSubCategories] = useState([]);
   const [selectedSubCategory, setSelectedSubCategory] = useState(null);
+  const [selectedReview, setSelectedReview] = useState(null);
 
   const onCategroryClick = (category) => {
     setSelectedSubCategory(null);
+    setSelectedReview(null);
     if (category._id === selectedCategory?._id) {
       setSelectedCategory(null);
     } else {
@@ -66,21 +69,30 @@ const Users = () => {
       });
   }, []);
 
+  const onViewReviews = (item) => {
+    setSelectedReview(item)
+  }
+
+  const getContent = () => {
+    const onGoBack = () => {
+      setSelectedReview(null);
+    }
+
+    if (selectedReview) {
+      return <Reviews item={selectedReview} onGoBack={onGoBack} />
+    } else if (selectedSubCategory) {
+      return <Items subcategory={selectedSubCategory} onReviewClick={onViewReviews} />
+    } else return <></>
+  }
+
   return (
-    <div>
+    <div style={{ display: 'flex', flexDirection: 'row' }}>
       <div className="categories">
         {categories?.map((cate => (
           <Category category={cate} />
         )))}
       </div>
-      {
-        selectedSubCategory && (
-          <div className="category-content">
-            <Items subcategory={selectedSubCategory} />
-          </div>
-        )
-      }
-
+        {getContent()}
     </div>
   );
 

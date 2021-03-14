@@ -56,7 +56,7 @@ code {
 
 .categories {
   width: 20%;
-  background-color: #ffddd2;
+  background-color: #83c5be;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -67,7 +67,7 @@ code {
 .category-item {
   border: none;
   cursor: pointer;
-  background-color: #ffddd2;
+  background-color: #83c5be;
   padding: 10px;
   color: #006d77;
   font-weight: 700;
@@ -77,9 +77,9 @@ code {
 }
 
 .category-item-active {
-  background-color: #e29578;
+  background-color: #006d77;
   color: #edf6f9;
-  border: 1px solid #006d77;
+  border: 1px solid #edf6f9;;
 }
 
 .subcategories {
@@ -89,16 +89,57 @@ code {
 
 .subcategory-item {
   padding: 10px;
-  background-color: #e29578;
+  background-color: #83c5be;
   border: none;
   text-align: start;
   padding: 10px;
   padding-left: 20px;
-  color: #edf6f9;
+  color: #006d77;
   cursor: pointer;
 }
 
 .subcategory-item-active {
   background-color: #006d77;
   color: #edf6f9;
+}
+
+.items {
+  height: 100%;
+  width: 100%;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.item {
+  margin: auto;
+  background-color: white;
+  padding: 20px;
+  width: 60%;
+  margin: 10px 0;
+  box-shadow: 5px 5px 15px 5px rgba(0,0,0,0.1);
+  border-radius: 6px;
+}
+
+.item-title {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.review-button {
+  background-color: #006d77;
+  padding: 10px;
+  font-size: 15px;
+  height: 40px;
+  color: #edf6f9;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  box-shadow: 5px 5px 15px 5px rgba(0,0,0,0.1);
+}
+
+.review-title {
+  color: #006d77;
+  font-weight: 700;
 }

@@ -8,6 +8,9 @@ const reviewSchema = new Schema({
   },
   content: {
     type: String
+  },
+  itemId: {
+    type: String,
   }
 });
 

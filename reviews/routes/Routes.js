@@ -9,10 +9,17 @@ app.get('/', (req, res) => {
   }).catch((error) => console.log(error));
 });
 
+app.get('/item/:id', (req, res) => {
+  const { id } = req.params;
+  repository.find({ itemId: id }).then((reviews) => {
+    res.json(reviews);
+  }).catch((error) => console.log(error));
+});
+
 app.post('/', (req, res) => {
   console.log(req.body)
-  const { title, content } = req.body;
-  repository.create({ title, content }).then((review) => {
+  const { title, content, itemId } = req.body;
+  repository.create({ title, content, itemId }).then((review) => {
     res.json(review);
   }).catch((error) => console.log(error));
 });

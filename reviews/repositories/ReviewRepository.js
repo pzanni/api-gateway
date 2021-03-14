@@ -11,6 +11,10 @@ class ReviewRepository {
     return newReview.save();
   }
 
+  find(condition) {
+    return this.model.find(condition);
+  }
+
   findAll() {
     return this.model.find();
   }

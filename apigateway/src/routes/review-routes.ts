@@ -11,4 +11,12 @@ app.get('/', (req: any, res: any) => {
     });
 });
 
+app.get('/item/:id', (req: any, res: any) => {
+    const { id } = req.params;
+    axios.get(`${API_URL}/item/${id}`).then((resp: any) => {
+        console.log(resp.data);
+        res.send(resp.data);
+    });
+});
+
 module.exports = app;
